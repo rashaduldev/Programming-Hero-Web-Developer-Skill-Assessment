@@ -83,7 +83,7 @@ const DashboardTopNavbar = () => {
            Edit Profile
           </button>
           </Link>
-          <Link href={'sign-in'}>
+          <Link href={'/users/login'}>
           <button
             className="w-full px-4 py-2 text-left hover:bg-gray-100"
             onClick={toggleOptions}>

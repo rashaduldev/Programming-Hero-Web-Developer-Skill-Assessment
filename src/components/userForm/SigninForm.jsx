@@ -1,12 +1,17 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Form, Button, Checkbox, DatePicker, Input, Select, Space } from "antd";
+import { Form, Button, Input, message } from "antd";
 
 const SignInForm = () => {
-  const [passwordShow, setPasswordShow] = useState(false);
+  const onFinish=()=>{
+    message.success('login Successfully');
+
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 1000);
+    
+  }
   return (
     <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg p-10  lg:max-w-4xl xl:mt-[110px] lg:mt-[90px] md:mt-[60px] mt-10">
       {/* <div className="hidden bg-cover lg:block lg:w-1/2 signup-bg"></div> */}
@@ -23,16 +28,14 @@ const SignInForm = () => {
       <div className="App w-full ">
       <header className="App-header">
         <Form
-        className="w-full"
-          autoComplete="off"
-          labelCol={{ span: 10 }}
-          wrapperCol={{ span: 14 }}
-          onFinish={(values) => {
-            console.log({ values });
-          }}
-          onFinishFailed={(error) => {
-            console.log({ error });
-          }}
+         className="w-full"
+         autoComplete="off"
+         labelCol={{ span: 10 }}
+         wrapperCol={{ span: 14 }}
+         onFinish={onFinish} // Set the onFinish event handler
+         onFinishFailed={(error) => {
+           console.log({ error });
+         }}
         >
           <Form.Item
             name="email"
