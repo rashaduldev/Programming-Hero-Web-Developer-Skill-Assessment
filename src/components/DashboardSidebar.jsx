@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MdDashboard, MdOutlineDarkMode } from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { PiTelevisionLight } from "react-icons/pi";
 

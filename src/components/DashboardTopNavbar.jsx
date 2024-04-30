@@ -41,7 +41,13 @@ const DashboardTopNavbar = () => {
         </div>
        </Link>
         {/* profile section  */}
+        
         <div className="flex gap-4 items-center">
+        <div>
+            <Link href={'/users/login'}>
+             <button className="bg-slate-300 p-2 rounded-lg">Login</button>
+            </Link>
+        </div>
           <div className="relative">
       <div
         className="cursor-pointer flex items-center gap-2"
