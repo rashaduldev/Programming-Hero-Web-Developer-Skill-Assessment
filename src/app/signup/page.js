@@ -155,7 +155,7 @@ const SignUpForm = () => {
         <div className=" mt-5 lg:mt-10">
           <p className="text-sm text-gray-500 text-center flex gap-3 justify-center">
            Already have an account
-            <Link href="/users/login" className="text-[#17C550]">
+            <Link href="/login" className="text-[#17C550]">
               Log In
             </Link>
           </p>

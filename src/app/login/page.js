@@ -8,7 +8,7 @@ const SignInForm = () => {
     message.success('login Successfully');
 
     setTimeout(() => {
-      window.location.href = '/';
+      window.location.href = '/users/dashboard';
     }, 1000);
     
   }
@@ -83,7 +83,7 @@ const SignInForm = () => {
         <div className=" mt-5 lg:mt-10">
           <p className="text-sm text-gray-500 text-center flex gap-3 justify-center">
             Don’t have an account?
-            <Link href="/users/signup" className="text-[#17C550]">
+            <Link href="/signup" className="text-[#17C550]">
               Sign Up
             </Link>
           </p>

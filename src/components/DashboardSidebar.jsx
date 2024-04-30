@@ -8,7 +8,7 @@ const DashboardSidebar = () => {
     {
       id: 1,
       text: "Dashboard",
-      link: "/dashboard",
+      link: "/users/dashboard",
       icon: <MdDashboard />,
     },
     {
@@ -19,8 +19,8 @@ const DashboardSidebar = () => {
     },
     {
       id: 3,
-      text: "Project",
-      link: "/project",
+      text: "Project Board",
+      link: "/users/project",
       icon: <PiTelevisionLight />,
     }
   ];

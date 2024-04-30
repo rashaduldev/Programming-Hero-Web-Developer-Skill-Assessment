@@ -44,7 +44,7 @@ const DashboardTopNavbar = () => {
         
         <div className="flex gap-4 items-center">
         <div>
-            <Link href={'/users/login'}>
+            <Link href={'/login'}>
              <button className="bg-slate-300 p-2 rounded-lg">Login</button>
             </Link>
         </div>
@@ -83,7 +83,7 @@ const DashboardTopNavbar = () => {
            Edit Profile
           </button>
           </Link>
-          <Link href={'/users/login'}>
+          <Link href={'sign-in'}>
           <button
             className="w-full px-4 py-2 text-left hover:bg-gray-100"
             onClick={toggleOptions}>
