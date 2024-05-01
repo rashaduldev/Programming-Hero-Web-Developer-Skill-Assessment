@@ -1,10 +1,10 @@
-import AllTask from '@/components/AllTask/AllTask';
+import Projects from '@/components/Projects/Projects';
 import React from 'react';
 
 const Project = (props) => {
     return (
        <div>
-       <AllTask/>
+        <Projects/>
        </div>
     );
 };

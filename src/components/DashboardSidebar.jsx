@@ -22,11 +22,17 @@ const DashboardSidebar = () => {
       text: "Project Board",
       link: "/users/project",
       icon: <PiTelevisionLight />,
-    }
+    },
+    {
+      id: 4,
+      text: "Task Management",
+      link: "/users/tasks",
+      icon: <PiTelevisionLight />,
+    },
   ];
 
   return (
-    <div className="overflow-y-scroll hidden lg:block max-w-[340px] bg-secondary h-screen fixed w-full py-10 px-6 custom-scrollbar bg-[#032D2C]">
+    <div className="overflow-y-scroll hidden lg:block max-w-[340px] h-screen fixed w-full py-10 px-6 custom-scrollbar bg-[#032D2C]">
       <div className="flex justify-center">
         <Link href="/users/dashboard">
             <h1 className="text-white text-3xl font-bold">Dashboard</h1>
@@ -37,7 +43,7 @@ const DashboardSidebar = () => {
         {dashboardMenuItem.map((item) => (
           <li
             key={item.id}
-            className="px-3 rounded-md py-3 bg-transparent hover:bg-white hover:text-black text-white hover:text-secondary  duration-300"
+            className="px-3 rounded-md py-3 bg-transparent hover:bg-white hover:text-black text-white duration-300"
           >
             <Link
               href={item.link}
