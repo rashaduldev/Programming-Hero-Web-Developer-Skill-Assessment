@@ -1,4 +1,5 @@
 "use client";
+import AllTask from '@/components/AllTask/AllTask';
 import { projectData } from '@/fakeData/projectPageData';
 import React, { useState, useEffect } from 'react';
 import { FaProductHunt } from 'react-icons/fa6';
@@ -36,7 +37,8 @@ const ProjectDetailPage = () => {
                 <div className="card-actions justify-end">
                 </div>
             </div>
-</div>
+          </div>
+          <AllTask/>
         </div>
     );
 };

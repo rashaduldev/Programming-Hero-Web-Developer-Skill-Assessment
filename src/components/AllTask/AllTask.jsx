@@ -21,7 +21,6 @@ const AllTask = () => {
     return (
        <DndProvider backend={HTML5Backend}>
         <Toaster />
-        <h1 className="text-center">Total Task: {tasks.length}</h1>
          <div className="bg-stone-200 w-full h-screen flex flex-col items-center pt-5 gap-20">
             <NewTask tasks={tasks} setTasks={setTasks}></NewTask>
             <ListTask tasks={tasks} setTasks={setTasks}></ListTask>

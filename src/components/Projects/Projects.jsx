@@ -11,16 +11,94 @@ const ProjectsOverviewPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [formData, setFormData] = useState({
+    id: '',
+    name: '',
+    description: ''
+  });
+  const [isUpdateMode, setIsUpdateMode] = useState(false);
 
   useEffect(() => {
     setProjects(projectData);
   }, []);
 
-  const handleEditProject = (projectId) => {
-    // Navigate to project editing page
-    console.log(`Edit project ${projectId}`);
+  const handleViewProject = (projectId) => {
+    window.location.href = `/users/project/${projectId}`;
   };
-  
+
+  const handleEditProject = (projectId) => {
+    const project = projects.find(project => project.id === projectId);
+    if (project) {
+      setFormData({
+        id: project.id,
+        name: project.name,
+        description: project.description
+      });
+      setIsUpdateMode(true); // Switch to update mode when editing
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your submission logic here
+    // For now, let's just log the form data
+    console.log("Form submitted with data:", formData);
+    // Add the new project to the projects array
+    const newProject = {
+      id: projects.length + 1, // Generate a unique ID for the new project
+      name: formData.name,
+      description: formData.description
+    };
+    setProjects([...projects, newProject]);
+    // Clear form fields after submission
+    setFormData({
+      name: '',
+      description: ''
+    });
+    // Show SweetAlert notification
+    Swal.fire({
+      title: 'Success!',
+      text: 'New project added successfully.',
+      icon: 'success'
+    });
+  };
+
+  const handleUpdateProject = () => {
+    // Update project data in projects state
+    const updatedProjects = projects.map(project => {
+      if (project.id === formData.id) {
+        return {
+          ...project,
+          name: formData.name,
+          description: formData.description
+        };
+      }
+      return project;
+    });
+    setProjects(updatedProjects);
+    // Reset form data
+    setFormData({
+      id: '',
+      name: '',
+      description: ''
+    });
+    // Reset to add mode after updating
+    setIsUpdateMode(false);
+    Swal.fire({
+      title: 'Updated!',
+      text: 'Your project has been updated.',
+      icon: 'success'
+    });
+  };
+
   const handleDeleteProject = (projectId) => {
     console.log(`Delete project ${projectId}`);
     Swal.fire({
@@ -44,12 +122,67 @@ const ProjectsOverviewPage = () => {
     });
   };
 
-  const handleViewProject = (projectId) => {
-    window.location.href = `/users/project/${projectId}`;
-  };
-
   return (
     <div>
+       <div>
+        {/* Conditional rendering for add or update form */}
+        {!isUpdateMode ? (
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+          <div className="mb-4">
+            <input 
+              type="text" 
+              name="name" 
+              value={formData.name} 
+              onChange={handleInputChange} 
+              placeholder="Enter project name" 
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
+          <div className="mb-4">
+            <textarea 
+              name="description" 
+              value={formData.description} 
+              onChange={handleInputChange} 
+              placeholder="Enter project description" 
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              rows="4"
+            />
+          </div>
+          <div className="text-center">
+            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Add Project</button>
+          </div>
+        </form>
+        ) : (
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            handleUpdateProject();
+          }} className="max-w-md mx-auto">
+            <div className="mb-4">
+              <input 
+                type="text" 
+                name="name" 
+                value={formData.name} 
+                onChange={handleInputChange} 
+                placeholder="Enter project name" 
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              />
+            </div>
+            <div className="mb-4">
+              <input 
+                type="text" 
+                name="description" 
+                value={formData.description} 
+                onChange={handleInputChange} 
+                placeholder="Enter project description" 
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              />
+            </div>
+            <div className="text-center">
+              <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Update Project</button>
+            </div>
+                  </form>
+        )}
+      </div>
       <ul>
         <div className="overflow-x-auto">
           <table className="table">
@@ -79,7 +212,9 @@ const ProjectsOverviewPage = () => {
                     </Link>
                   </td>
                   <td onClick={() => handleViewProject(project.id)} className="w-[450px]">
+                  <Link href={`/users/project/${project.id}`}>
                     {project.description}
+                    </Link>
                   </td>
                   <td>
                     <button onClick={() => handleEditProject(project.id)} className="btn btn-ghost btn-lg text-2xl"><FaPencilAlt /></button>
@@ -98,3 +233,5 @@ const ProjectsOverviewPage = () => {
 };
 
 export default ProjectsOverviewPage;
+
+
