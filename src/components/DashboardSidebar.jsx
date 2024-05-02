@@ -14,19 +14,13 @@ const DashboardSidebar = () => {
     {
       id: 2,
       text: "Profile",
-      link: "/userprofile",
+      link: "/users/profile",
       icon: <FaUser />,
     },
     {
       id: 3,
       text: "Project Board",
       link: "/users/project",
-      icon: <PiTelevisionLight />,
-    },
-    {
-      id: 4,
-      text: "Task Management",
-      link: "/users/tasks",
       icon: <PiTelevisionLight />,
     },
   ];

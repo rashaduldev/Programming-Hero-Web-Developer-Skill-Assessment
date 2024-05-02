@@ -1,4 +1,5 @@
 "use client";
+// AllTask.js
 import { useEffect, useState } from "react";
 import NewTask from "../NewTask/NewTask";
 import ListTask from "../ListTask/ListTask";
@@ -6,26 +7,24 @@ import { Toaster } from 'react-hot-toast';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 
-
 const AllTask = () => {
-    const [tasks,setTasks]=useState([]);
-      
+    const [tasks, setTasks] = useState([]);
 
-    useEffect   (() => {
+    useEffect(() => {
         const storedTasks = localStorage.getItem('tasks');
         if (storedTasks) {
           setTasks(JSON.parse(storedTasks));
         }
-      }, [setTasks]);
+    }, []);
 
     return (
-       <DndProvider backend={HTML5Backend}>
-        <Toaster />
-         <div className="bg-stone-200 w-full h-screen flex flex-col items-center pt-5 gap-20">
-            <NewTask tasks={tasks} setTasks={setTasks}></NewTask>
-            <ListTask tasks={tasks} setTasks={setTasks}></ListTask>
-        </div>
-       </DndProvider>
+        <DndProvider backend={HTML5Backend}>
+            <Toaster />
+            <div className="bg-stone-200 w-full h-screen flex flex-col items-center pt-5 gap-20">
+                <NewTask tasks={tasks} setTasks={setTasks}></NewTask>
+                <ListTask tasks={tasks} setTasks={setTasks}></ListTask>
+            </div>
+        </DndProvider>
     );
 };
 

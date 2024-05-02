@@ -62,12 +62,12 @@ const DashboardTopNavbar = () => {
         />
         <div>
           <p className="font-bold">Johan Smith</p>
-          <p>Investor</p>
+          <p>Admin</p>
         </div>
       </div>
       {isOptionsVisible && (
         <div className="absolute top-full right-0 z-10 w-56 bg-white shadow-md rounded-md mt-2">
-          <Link href={'userprofile'}>
+          <Link href={'/users/profile'}>
           <button
            onClick={toggleOptions}
             className="w-full px-4 py-2 text-left hover:bg-gray-100"
@@ -75,7 +75,7 @@ const DashboardTopNavbar = () => {
             Profile
           </button>
           </Link>
-          <Link href={'editprofile'}>
+          <Link href={'/users/editprofile'}>
           <button
            onClick={toggleOptions}
             className="w-full px-4 py-2 text-left hover:bg-gray-100"
